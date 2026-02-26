@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Breast Cancer Prediction</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #e3f2fd, #fce4ec);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 850px;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #1a73e8;
+            font-size: 30px;
+        }
+
+        .section-title {
+            margin: 30px 0 12px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #5f6368;
+            border-left: 4px solid #1a73e8;
+            padding-left: 10px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .field {
+            position: relative;
+        }
+
+        .field input {
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1.5px solid #dadce0;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .field input:focus {
+            border-color: #1a73e8;
+            box-shadow: 0 0 0 3px rgba(26,115,232,0.15);
+            outline: none;
+        }
+
+        .field label {
+            position: absolute;
+            top: -8px;
+            left: 12px;
+            background: #fff;
+            padding: 0 6px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #1a73e8;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 35px;
+            padding: 16px;
+            font-size: 17px;
+            font-weight: 700;
+            border: none;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #1a73e8, #4285f4);
+            color: #fff;
+            cursor: pointer;
+            box-shadow: 0 15px 35px rgba(26,115,232,0.35);
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 22px 45px rgba(26,115,232,0.45);
+        }
+
+        .result {
+            margin-top: 30px;
+            padding: 22px;
+            text-align: center;
+            font-size: 22px;
+            font-weight: 700;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #34a853, #00c853);
+            color: #fff;
+            box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>🩺 Breast Cancer Prediction</h1>
+
+    <form method="post">
+
+        <!-- MEAN -->
+        <div class="section-title">Mean Features</div>
+        <div class="grid">
+            <div class="field"><label>Radius Mean</label><input name="radius_mean" type="number" step="any" required></div>
+            <div class="field"><label>Texture Mean</label><input name="texture_mean" type="number" step="any" required></div>
+            <div class="field"><label>Perimeter Mean</label><input name="perimeter_mean" type="number" step="any" required></div>
+            <div class="field"><label>Area Mean</label><input name="area_mean" type="number" step="any" required></div>
+            <div class="field"><label>Smoothness Mean</label><input name="smoothness_mean" type="number" step="any" required></div>
+            <div class="field"><label>Compactness Mean</label><input name="compactness_mean" type="number" step="any" required></div>
+            <div class="field"><label>Concavity Mean</label><input name="concavity_mean" type="number" step="any" required></div>
+            <div class="field"><label>Concave Points Mean</label><input name="concave_points_mean" type="number" step="any" required></div>
+            <div class="field"><label>Symmetry Mean</label><input name="symmetry_mean" type="number" step="any" required></div>
+            <div class="field"><label>Fractal Dimension Mean</label><input name="fractal_dimension_mean" type="number" step="any" required></div>
+        </div>
+
+        <!-- SE -->
+        <div class="section-title">Standard Error Features</div>
+        <div class="grid">
+            <div class="field"><label>Radius SE</label><input name="radius_se" type="number" step="any" required></div>
+            <div class="field"><label>Texture SE</label><input name="texture_se" type="number" step="any" required></div>
+            <div class="field"><label>Perimeter SE</label><input name="perimeter_se" type="number" step="any" required></div>
+            <div class="field"><label>Area SE</label><input name="area_se" type="number" step="any" required></div>
+            <div class="field"><label>Smoothness SE</label><input name="smoothness_se" type="number" step="any" required></div>
+            <div class="field"><label>Compactness SE</label><input name="compactness_se" type="number" step="any" required></div>
+            <div class="field"><label>Concavity SE</label><input name="concavity_se" type="number" step="any" required></div>
+            <div class="field"><label>Concave Points SE</label><input name="concave_points_se" type="number" step="any" required></div>
+            <div class="field"><label>Symmetry SE</label><input name="symmetry_se" type="number" step="any" required></div>
+            <div class="field"><label>Fractal Dimension SE</label><input name="fractal_dimension_se" type="number" step="any" required></div>
+        </div>
+
+        <!-- WORST -->
+        <div class="section-title">Worst Features</div>
+        <div class="grid">
+            <div class="field"><label>Radius Worst</label><input name="radius_worst" type="number" step="any" required></div>
+            <div class="field"><label>Texture Worst</label><input name="texture_worst" type="number" step="any" required></div>
+            <div class="field"><label>Perimeter Worst</label><input name="perimeter_worst" type="number" step="any" required></div>
+            <div class="field"><label>Area Worst</label><input name="area_worst" type="number" step="any" required></div>
+            <div class="field"><label>Smoothness Worst</label><input name="smoothness_worst" type="number" step="any" required></div>
+            <div class="field"><label>Compactness Worst</label><input name="compactness_worst" type="number" step="any" required></div>
+            <div class="field"><label>Concavity Worst</label><input name="concavity_worst" type="number" step="any" required></div>
+            <div class="field"><label>Concave Points Worst</label><input name="concave_points_worst" type="number" step="any" required></div>
+            <div class="field"><label>Symmetry Worst</label><input name="symmetry_worst" type="number" step="any" required></div>
+            <div class="field"><label>Fractal Dimension Worst</label><input name="fractal_dimension_worst" type="number" step="any" required></div>
+        </div>
+
+        <button type="submit">🔍 Predict Diagnosis</button>
+    </form>
+
+    {% if prediction %}
+    <div class="result">
+        Diagnosis Result: {{ prediction }}
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
